@@ -10,11 +10,9 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
-
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
-
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -25,12 +23,26 @@
       bordered
     >
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+        <q-item-label header>Essential Links</q-item-label>
+        <q-item to="/" clickable>
+          <q-btn flat icon="home">Home</q-btn>
+        </q-item>
 
+        <q-item to="/piechart" clickable>
+          <q-btn flat icon="info">Pie Chart</q-btn>
+        </q-item>
+
+        <q-item to="/bargraph" clickable>
+          <q-btn flat icon="info">Bar Graph</q-btn>
+        </q-item>
+
+        <q-item to="/users" clickable>
+          <q-btn flat icon="info">Users Table</q-btn>
+        </q-item>
+        <q-item to="/addusers" clickable>
+          <q-btn flat icon="info">aAdd Users</q-btn>
+        </q-item>
+        <q-item-label header>Other Links</q-item-label>
         <EssentialLink
           v-for="link in linksList"
           :key="link.title"
@@ -53,54 +65,9 @@ defineOptions({
   name: 'MainLayout'
 })
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
 const leftDrawerOpen = ref(false)
 
-function toggleLeftDrawer () {
+function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 </script>
