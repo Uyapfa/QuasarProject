@@ -1,7 +1,10 @@
 <template>
     <q-page class="q-pa-md">
+        <div class="text-h4 text-center q-mb-md">
+          Manage Users
+        </div>
       <div class="q-mb-md q-mx-auto" style="max-width: 800px;">
-        <!-- Form for Adding/Editing User -->
+    
         <q-form @submit.prevent="saveUser">
           <q-input v-model="user.name" label="Name" required class="q-mb-md"/>
           <q-input v-model="user.surname" label="Surname" required class="q-mb-md"/>
@@ -9,7 +12,6 @@
           <q-btn @click="clearForm" label="Clear" color="secondary" class="q-mb-md"/>
         </q-form>
   
-        <!-- Data Table -->
         <q-table
           :rows="users"
           :columns="columns"
@@ -71,6 +73,6 @@
   </script>
   
   <style scoped>
-  /* Optional styling */
+  
   </style>
   

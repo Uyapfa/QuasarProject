@@ -1,18 +1,20 @@
 <template>
-  <q-page class="q-pa-md">
-    <div class="q-mb-md q-mx-auto" style="max-width: 500px;">
-  
-      <div class="text-h6 text-center q-mb-md">
+     <q-page class="q-pa-md">
+      <div class="text-h4 text-center q-mb-md">
         Pie Chart Example
       </div>
+      <div class="q-mb-md q-mx-auto"  style="max-width: 600px;">
+     
 
-      <div v-if="loading" class="text-center q-mt-md">
+      <div v-if="loading" class="text-center q-my-md">
         <q-spinner color="primary" />
         <p>Loading chart data...</p>
       </div>
 
-      <div v-else class="q-mt-md">
-        <apexchart type="pie" width="100%" :options="chartOptions" :series="series" />
+      <div v-else class="q-my-md">
+        <q-card flat bordered class="q-pa-sm">
+          <apexchart type="pie" width="100%" :options="chartOptions" :series="series" />
+        </q-card>
       </div>
     </div>
   </q-page>
@@ -21,7 +23,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import VueApexCharts from 'vue3-apexcharts';
-import { QSpinner } from 'quasar';
+import { QSpinner, QCard } from 'quasar';
 
 const chartOptions = ref({
   chart: {

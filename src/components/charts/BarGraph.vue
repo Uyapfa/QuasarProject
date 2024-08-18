@@ -2,7 +2,7 @@
     <q-page class="q-pa-md">
       <div class="q-mb-md q-mx-auto" style="max-width: 600px;">
         
-        <div class="text-h6 text-center q-mb-md">
+        <div class="text-h4 text-center q-mb-md">
           Bar Chart Example
         </div>
         
@@ -10,10 +10,12 @@
           <q-spinner color="primary" />
           <p>Loading chart data...</p>
         </div>
-  
-        <div v-else class="q-mt-md">
-          <apexchart type="bar" width="100%" :options="chartOptions" :series="series" />
-        </div>
+        <div v-else class="q-my-md">
+        <q-card flat bordered class="q-pa-sm">
+            <apexchart type="bar" width="100%" :options="chartOptions" :series="series" />
+        </q-card>
+      </div>
+        
       </div>
     </q-page>
   </template>
