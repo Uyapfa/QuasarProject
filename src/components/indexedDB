@@ -3,12 +3,33 @@ const storeName = 'users';
 
 async function openDB() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(dbName, 1);
+    const request = indexedDB.open(dbName, 2); 
 
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
+
       if (!db.objectStoreNames.contains(storeName)) {
-        db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+    
+        const objectStore = db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+        objectStore.createIndex('email', 'email', { unique: false });
+      } else {
+        const objectStore = event.target.transaction.objectStore(storeName);
+
+        if (!objectStore.indexNames.contains('email')) {
+          objectStore.createIndex('email', 'email', { unique: false });
+        }
+
+        objectStore.openCursor().onsuccess = function (event) {
+          const cursor = event.target.result;
+          if (cursor) {
+            const record = cursor.value;
+            if (!record.email) {
+              record.email = ''; 
+              cursor.update(record);
+            }
+            cursor.continue();
+          }
+        };
       }
     };
 
@@ -28,10 +49,10 @@ export async function addUser(user) {
     const transaction = database.transaction(storeName, 'readwrite');
     const store = transaction.objectStore(storeName);
 
-    // Ensure the object is plain and serializable
     const userToAdd = {
       name: user.name,
-      surname: user.surname
+      surname: user.surname,
+      email: user.email || '' 
     };
 
     const request = store.add(userToAdd);

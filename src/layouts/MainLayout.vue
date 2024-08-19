@@ -11,9 +11,9 @@
           @click="toggleLeftDrawer"
         />
         <q-toolbar-title>
-          Quasar App
+          Dashboard
         </q-toolbar-title>
-        <div>Quasar v{{ $q.version }}</div>
+        <div>EcoTech Dynamics</div>
       </q-toolbar>
     </q-header>
 
@@ -122,7 +122,6 @@ function isActive(path) {
 </script>
 
 <style scoped>
-/* Background and text color for the drawer and active links */
 .bg-blue-grey-2 {
   background-color: #f2f2f2 !important; 
 }
@@ -144,7 +143,7 @@ function isActive(path) {
 }
 
 .text-dark-green {
-  color: #095548 !important; /* Dark green color */
+  color: #095548 !important; 
 }
 
 .text-white {
